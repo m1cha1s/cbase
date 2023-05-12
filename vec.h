@@ -93,7 +93,7 @@ Returns:
     -2 -> Cannot shrink
 */
 int vec_try_shrink(vec* v) {
-    if (v->count > v->capacity)
+    if (v->count > v->capacity && v->capacity >= v->growth_factor)
         return -2; // There is no need to shrink the vec
 
     unsigned int new_capacity = v->capacity/v->growth_factor;
